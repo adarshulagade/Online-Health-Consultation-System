@@ -25,5 +25,8 @@ A web-based system that allows patients to consult doctors online, book appointm
 5. Open browser:  
    `http://localhost/online_consultation`
 
+## 🗄️ Database
+Import `database/health_consultation_db.sql` into phpMyAdmin before running the project.
+
 ## 👨‍💻 Author
 Adarsh Ulagade
