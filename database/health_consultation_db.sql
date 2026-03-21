@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 17, 2026 at 10:11 AM
+-- Generation Time: Mar 21, 2026 at 08:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -62,8 +62,10 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `patient_id`, `doctor_id`, `appointment_date`, `status`, `created_at`, `appointment_time`, `problem`) VALUES
-(1, 1, 1, '2026-03-05', 'Approved', '2026-03-10 09:04:35', '14:34:00', 'xcgd'),
-(2, 1, 1, '2026-03-10', 'Approved', '2026-03-14 06:13:41', '11:45:00', 'jhg');
+(1, 1, 1, '2026-03-05', 'Rejected', '2026-03-10 09:04:35', '14:34:00', 'xcgd'),
+(2, 1, 1, '2026-03-10', 'Rejected', '2026-03-14 06:13:41', '11:45:00', 'jhg'),
+(3, 1, 1, '2026-03-20', 'Approved', '2026-03-17 13:37:43', '20:10:00', 'body pain'),
+(4, 2, 1, '2026-03-20', 'Approved', '2026-03-18 06:21:37', '11:53:00', 'headache');
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,10 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `name`, `email`, `specialization`, `experience`, `password`, `created_at`, `phone`, `fees`) VALUES
-(1, 'Dr. Sharma', 'doctor@gmail.com', 'General Physician', 5, '12345', '2026-03-10 08:49:32', '9876543210', 500.00);
+(1, 'Dr. Sharma', 'doctor@gmail.com', 'General Physician', 5, '12345', '2026-03-10 08:49:32', '9876543210', 500.00),
+(2, 'Dr. Mehta', 'mehta@gmail.com', 'Cardiologist', 8, '12345', '2026-03-21 07:50:41', '9876543211', 700.00),
+(3, 'Dr. Patil', 'patil@gmail.com', 'Dermatologist', 5, '12345', '2026-03-21 07:50:59', '9876543212', 500.00),
+(4, 'Dr. Joshi', 'joshi@gmail.com', 'Pediatrician', 6, '12345', '2026-03-21 07:51:13', '9876543213', 600.00);
 
 -- --------------------------------------------------------
 
@@ -113,7 +118,8 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `name`, `email`, `password`, `phone`, `age`, `gender`, `created_at`, `address`) VALUES
-(1, 'adarsh', 'adarsh@gamil.com', '12345', '4651545156', 22, 'Male', '2026-03-10 08:38:03', 'pune');
+(1, 'adarsh', 'adarsh@gamil.com', '12345', '4651545156', 22, 'Male', '2026-03-10 08:38:03', 'pune'),
+(2, 'aarya', 'aaryapatil99@gmail.com', '123', '212345', 23, 'Female', '2026-03-18 06:20:44', 'asd');
 
 -- --------------------------------------------------------
 
@@ -139,7 +145,11 @@ CREATE TABLE `prescriptions` (
 INSERT INTO `prescriptions` (`id`, `appointment_id`, `medicines`, `notes`, `created_at`, `doctor_id`, `patient_id`, `prescription_text`) VALUES
 (1, 2, NULL, NULL, '2026-03-16 15:48:19', 1, 1, 'afas'),
 (2, 1, NULL, NULL, '2026-03-16 16:00:09', 1, 1, 'sadas'),
-(3, 2, NULL, NULL, '2026-03-17 07:01:53', 1, 1, 'painkiller');
+(3, 2, NULL, NULL, '2026-03-17 07:01:53', 1, 1, 'painkiller'),
+(4, 2, NULL, NULL, '2026-03-17 09:39:05', 1, 1, 'painkiller'),
+(5, 3, NULL, NULL, '2026-03-17 13:38:57', 1, 1, 'take pain killer'),
+(6, 4, NULL, NULL, '2026-03-18 06:22:34', 1, 2, 'painkiller'),
+(7, 3, NULL, NULL, '2026-03-18 07:35:35', 1, 1, 'painkiller');
 
 --
 -- Indexes for dumped tables
@@ -197,25 +207,25 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
